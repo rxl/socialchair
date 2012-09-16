@@ -123,8 +123,8 @@ def _invite_friends_to_facebook_event():
 	else:
 		return json.dumps({ "error": "invalid parameters" }), 400
 
-	data = invite_friends_to_facebook_event(friends, event_id)
-	#data = "it didn't actually invite friends on facebook"
+	#data = invite_friends_to_facebook_event(friends, event_id)
+	data = "it didn't actually invite friends on facebook"
 
 	return json.dumps({"data": data})
 
@@ -159,6 +159,7 @@ def get_clusters_for_access_token(access_token):
 	graphmuse_get_clusters_url = graphmuse_api_base_url + access_token
 	response = requests.get(graphmuse_get_clusters_url, verify=False)
 	json_response = response.json
+	print json_response
 
 	if 'clusters' in json_response:
 		clusters = json_response['clusters']
@@ -307,6 +308,7 @@ def invite_friends(event_id, event_name):
 	if 'facebook_token' in session and len(session) > 0:
 		access_token = session['facebook_token'][0]
 		clusters = get_clusters_for_access_token(access_token)
+		print clusters
 
 	return render_template('invite_friends.html', clusters=clusters, event_id=event_id, event_name=event_name)
 
