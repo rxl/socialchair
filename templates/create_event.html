@@ -31,12 +31,12 @@
 		</div>
 		<div class="row">
 			<div class="row-label">Start time:</div>
-			<input type="text" id="inputStarts" class="input-text datepicker" onclick="javascript:NewCssCal('inputStarts','yyyyMMdd','arrow',true,'24')" disabled="disabled" />
+			<input type="text" id="inputStarts" class="input-text datepicker oversize" onclick="javascript:NewCssCal('inputStarts','yyyyMMdd','arrow',true,'24')" disabled="disabled" />
 			<img src="{{ url_for('static', filename='img/cal.gif') }}" onclick="javascript:NewCssCal('inputStarts','yyyyMMdd','arrow',true,'24')" style="cursor:pointer" id="startsCal" />
 		</div>
 		<div class="row">
 			<div class="row-label">End time:</div>
-			<input type="text" id="inputEnds" class="input-text datepicker" onclick="javascript:NewCssCal('inputEnds','yyyyMMdd','arrow',true,'24')" disabled="disabled" />
+			<input type="text" id="inputEnds" class="input-text datepicker oversize" onclick="javascript:NewCssCal('inputEnds','yyyyMMdd','arrow',true,'24')" disabled="disabled" />
 			<img src="{{ url_for('static', filename='img/cal.gif') }}" onclick="javascript:NewCssCal('inputEnds','yyyyMMdd','arrow',true,'24')" style="cursor:pointer" id="endsCal" />
 		</div>
 		<button style="cursor: pointer;" type="submit" id="createEventSubmit" class="button">Create Event</button>
