@@ -72,6 +72,12 @@ input[type=text]{
 
 }
 
+.create-event-button{
+	margin-top:20px;
+
+	width:254px !important;
+}
+
 .send-event-inv{
 	float:right;
 	width:280px;
