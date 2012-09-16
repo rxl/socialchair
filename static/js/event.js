@@ -59,17 +59,21 @@ function createEventFailed(data) {
 
 function createEvent() {
 	var eventData = {}
-	
-	eventData['name'] = $('#inputName').get(0).value;
-	eventData['description'] = $('#inputDescription').get(0).value;
-	eventData['location'] = $('#inputLocation').get(0).value;
-	eventData['start_time'] = ISODateString($('#inputStarts').get(0).value);
-	eventData['end_time'] = ISODateString($('#inputEnds').get(0).value);
-	
-	if (eventData['start_time'] != eventData['end_time']) {
-		postToUrl("/_push_event_to_facebook", "createEvent", eventData);
+
+	if ($('#inputName').get(0).value != "" && $('#inputDescription').get(0).value != "" && $('#inputLocation').get(0).value != "") {
+		eventData['name'] = $('#inputName').get(0).value;
+		eventData['description'] = $('#inputDescription').get(0).value;
+		eventData['location'] = $('#inputLocation').get(0).value;
+		eventData['start_time'] = ISODateString($('#inputStarts').get(0).value);
+		eventData['end_time'] = ISODateString($('#inputEnds').get(0).value);
+		
+		if (eventData['start_time'] != eventData['end_time']) {
+			postToUrl("/_push_event_to_facebook", "createEvent", eventData);
+		} else {
+			alert("You can't have an event start and end at the same time!");
+		}
 	} else {
-		alert("You can't have an event start and end at the same time!");
+		alert("Fill out the fields!");
 	}
 }
 
