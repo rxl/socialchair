@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Create Facebook Event - {% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript" src="{{ url_for('static', filename='js/datetimepicker_css.js') }}"></script>
+	<script>
+		$('#createEventSubmit').live('click', function() {
+            createEvent();
+        });
+	</script>
+	<link rel="Stylesheet" type="text/css" href="{{ url_for('static', filename='css/event-creation.css') }}" />
+{% endblock %}
+
+{% block content %}
+	<div class="invite-title">Create a Facebook Event:</div>
+
+	<form action="javascript:void(0)" id="createEventForm" class="">
+		<div class="row">
+			<div class="row-label">Name:</div>
+			<input type="text" id="inputName" class="input-text oversize" />
+		</div>
+		<div class="row">
+			<div class="row-label">Description:</div>
+			<input type="text" id="inputDescription" class="input-text oversize" />
+		</div>
+		<div class="row">
+			<div class="row-label">Location:</div>
+			<input type="text" id="inputLocation" class="input-text oversize" />
+		</div>
+		<div class="row">
+			<div class="row-label">Start time:</div>
+			<input type="text" id="inputStarts" class="input-text datepicker" disabled="disabled" />
+			<img src="{{ url_for('static', filename='img/cal.gif') }}" onclick="javascript:NewCssCal('inputStarts','yyyyMMdd','arrow',true,'24')" style="cursor:pointer" id="startsCal" />
+		</div>
+		<div class="row">
+			<div class="row-label">End time:</div>
+			<input type="text" id="inputEnds" class="input-text datepicker" disabled="disabled" />
+			<img src="{{ url_for('static', filename='img/cal.gif') }}" onclick="javascript:NewCssCal('inputEnds','yyyyMMdd','arrow',true,'24')" style="cursor:pointer" id="endsCal" />
+		</div>
+		<button style="cursor: pointer;" type="submit" id="createEventSubmit" class="button">Create Event</button>
+	</form>
+{% endblock %}

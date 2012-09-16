@@ -1,0 +1,81 @@
+{% import "_macros.html" as macros %}
+{% extends "base.html" %}
+
+{% block title %}Invite Friends - {% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script>
+		/*$('#inviteFriendsSubmit').live('click', function() {
+			inviteFriends({{ event_id }});
+        });*/
+		$(document).ready(function(){
+			$('.select-all').click(function(){
+				if ( $(this).hasClass('.toggled-deselect') ){
+					$(this).parent().parent().parent('.cluster-wrap').children('.cluster').children('.friend').children('.outer-circle').removeClass("selected");
+					$(this).css({'background-color': '#3487D7'});
+					$(this).removeClass('.toggled-deselect');
+					$(this).children('.checkbox-select').prop("checked", false);
+				}
+				else {
+					$(this).parent().parent().parent('.cluster-wrap').children('.cluster').children('.friend').children('.outer-circle').addClass("selected");
+					
+					//$(this).css({'background-color': '#D9D9D9'});
+					$(this).addClass('.toggled-deselect');
+					$(this).children('.checkbox-select').prop("checked", true);
+				}
+			});
+			$(".checkbox-select").click(function(){
+			});
+			$('.friend').click(function(){
+				if ( $(this).children('.outer-circle').hasClass('selected') ) {	
+					$(this).children('.outer-circle').removeClass("selected");
+				}
+				else {
+					$(this).children('.outer-circle').addClass("selected");
+				}
+			});
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+	<div class="invite-title">
+		Which group of friends do you want to invite?
+	</div>
+	{% for cluster in clusters %}
+		<div class="cluster-wrap">
+			<div class="button-group">
+				<div class="button-wrap">
+					<div class="select-button select-all">
+						<input type="checkbox" class="checkbox-select"/>
+						<div class="select-all-text">Select All</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="cluster">
+				{% for friend in cluster.members %}
+					{{ macros.friend(friend) }}
+				{% endfor %}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
+
+{% block visual_footer %}
+	<div class="footer">
+		<div class="footer-inner">
+			<form method="POST" action="/party" id="createPartyPageForm">
+				<input type="hidden" name="eventId" value="{{ event_id }}">
+				<input type="hidden" name="eventName" value="{{ event_name }}">
+				<input type="hidden" name="friends" id="friendsInput" value="">
+			</form>
+
+			<a href="javascript:inviteFriends()" class="action-button send-event-inv">
+				<div class="send-inv-text">Send Event Invitations</div>
+				<div class="send-inv-arrow">></div>
+			</a>
+		</div>
+	</div>
+{% endblock %}

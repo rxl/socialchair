@@ -1,0 +1,60 @@
+<html>
+<head>
+	<link rel="Stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}" />
+	<link rel="Stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
+	<title>SocialChair.Me</title>
+	<style>
+		a.right-nav-item {
+			color: black;
+			text-decoration: none;
+		}
+		.social-nav {
+			margin-top: -22px;
+			float: right;
+			list-style: none;
+			color: black;
+		}
+	</style>
+
+	<body>
+		<img src="{{ url_for('static', filename='img/background.jpg') }}" class="full-screen">
+		<div class="home-header-wrap">
+			<div class="home-header-inner">
+				<div class="logo">
+					SocialChair.Me
+				</div>
+				<ul class="social-nav nav pull-right">
+				<li>
+				{% if not session.logged_in %}
+				<a class="right-nav-item" href="/facebook_login">Login or Signup</a>
+				{% else %}
+				<a class="right-nav-item" href="/logout">Logout</a>
+				{% endif %}
+				</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="main">
+			<div class="panel">
+				<div class="pitch-wrap-1">
+					<div class="pitch"></div><div class="pitch-text">Make event planning on Facebook seamless.</div>
+				</div>
+				<div class="pitch-wrap-2">
+					<div class="pitch pitch2"></div><div class="pitch-text2">Send your event invitations in batches to save time.</div>
+				</div>
+				<div class="pitch-wrap-3">
+					<div class="pitch pitch3"></div><div class="pitch-text3">Discover which Spotify songs your friends want to hear at the event!</div>
+				</div>
+				<div class="login-div">
+					<div class="login-button">
+						<a style="color: white; text-decoration: none;" href="/facebook_login"><div class="login-text">Login with Facebook</div></a>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</body>
+</head>

@@ -1,11 +1,9 @@
 {% extends "base.html" %}
+
 {% block content %}
-{% if not session.logged_in %}
-     <p>You are not logged in.</p>
-{% else %}
-     <p>You are logged in.</p>
-{% endif %}
-
-<a href="/create_event">Create Event</a>
-
+	{% if not session.logged_in %}
+		<a class="button" href="/facebook_login">Log in with Facebook</a>
+	{% else %}
+		<a class="button" href="/create_event">Start Planning a Party</a>
+	{% endif %}
 {% endblock %}

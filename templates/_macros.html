@@ -1,0 +1,22 @@
+{% macro friend(friend) %}
+	<div class="friend" fbid="{{ friend.i }}">
+		<div class="outer-circle" fbid="{{ friend.i }}" fbname="{{ friend.name }}">
+			<div class="circle">
+				<img style="display:none;" onload="resize(this, 124)" src="http://graph.facebook.com/{{ friend.i }}/picture?type=large" class="rounded-picture">
+			</div>
+		</div>
+		<div class="friend-name">{{ friend.name }}</div> 
+	</div>
+
+{% endmacro %}
+
+{% macro playlist(playlist) %}
+	<li class="playlist">
+		<div>
+			<div class="small-title">
+				{{ playlist.name }}
+			</div>
+			<iframe src="https://embed.spotify.com/?uri=spotify:trackset:{{ playlist.name }}:{{ playlist.songs }}" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+		</div>
+	</li>
+{% endmacro %}

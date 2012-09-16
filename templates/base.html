@@ -3,14 +3,13 @@
   <head>
     {% block head %}
     <meta charset="utf-8">
-    <title>MY_NEW_APP</title>
+    <title>{% block title %}{% endblock %}SocialChair.Me</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-    <style> body { padding-top: 60px; } </style>
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/reset.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
 
     <!-- SUPPORT FOR IE6-8 OF HTML5 ELEMENTS -->
     <!--[if lt IE 9]>
@@ -20,6 +19,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/event.js') }}"></script>
     <script type="text/javascript">
       if (window.location.hash == '#_=_') {
           window.location.hash = ''; // for older browsers, leaves a # behind
@@ -27,59 +27,38 @@
           //e.preventDefault(); // no page reload
       }
     </script>
+    <style> body { padding-top: 30px; } </style>
     {% endblock %}
   </head>
 
   <body>
-
     {% block navbar %}
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-              <a class="brand" href="#">MY_NEW_APP</a>
-              <div class="nav-collapse">
-                <ul class="nav">
-                </ul>
-                {% block navbar_right %}
-                <ul class="nav pull-right">
-                  {% if not session.logged_in %}
-                    <li><a href="/facebook_login">Login or Signup</a></li>
-                  {% else %}
-                    <li><a href="/logout">Logout</a></li>
-                  {% endif %}
-                </ul>
-                {% endblock %}
-              </div><!--/.nav-collapse -->
-            </div>
-          </div>
+    <div class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <a href="/">SocialChair.Me</a>
+        </div>
+        <ul class="social-nav nav pull-right">
+          <li>
+            {% if not session.logged_in %}
+            <a class="right-nav-item" href="/facebook_login">Login or Signup</a>
+            {% else %}
+            <a class="right-nav-item" href="/logout">Logout</a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
     </div>
     {% endblock %}
 
-    <div class="container page">
-        <div class="content">
-          {% block page_header %}
-          {% endblock %}
-
+    <div class="wrap">
+        <div class="main">
           {% block content %}
           {% endblock %}
         </div>
-
-        <hr>
-
-        {% block footer %}
-        <footer class="footer">
-            <p>&copy; MY_NEW_APP</p>
-        </footer>
-        {% endblock %}
-
     </div>
-    {% block js_footer %}
-      <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+
+    {% block visual_footer %}
     {% endblock %}
   </body>
 </html>

@@ -1,0 +1,40 @@
+{% import "_macros.html" as macros %}
+{% extends "base.html" %}
+
+{% block title %}Party Page - {% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript" src="{{ url_for('static', filename='js/songmagic.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/event.js') }}"></script>
+	<script>
+		function getSongsSucceeded(data) {
+			console.log(data);
+			processSongList(data);
+		}
+		function getSongsFailed(data) {
+			console.log(data);
+		}
+		$(document).ready(function () {
+			//getFromUrl("/get_songs_direct_api", "getSongs");
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+	<div class="invite-title">
+		{{ name }}
+	</div>
+	<div class="all-friends-container" style="min-height: 200px; margin: 20px">
+		{% for attendee in attendees %}
+			{{ macros.friend(attendee) }}
+		{% endfor %}
+	</div>
+	<div class="all-playlists-container">
+		<ul class="twocol">
+			{% for playlist in playlists %}
+				{{ macros.playlist(playlist) }}
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
