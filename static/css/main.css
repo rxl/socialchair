@@ -72,7 +72,7 @@ input.datepicker {
 }
 
 .friend-name {
-	width: 100px;
+	width: 120px;
 	margin-top:5px;
 	overflow: hidden;
 	line-height:1.3em;
@@ -251,7 +251,7 @@ html{
 .friend{
 	text-align: center;
 	width:128px;
-	height:122px;
+	height:142px;
 	float:left;
 	margin-left:25px;
 	margin-bottom:15px;

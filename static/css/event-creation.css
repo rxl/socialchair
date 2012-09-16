@@ -130,7 +130,7 @@ input[type=text]{
 }
 
 .last-row{
-	margin-bottom:20px;
+	margin-bottom:20px !important;
 }
 
 
