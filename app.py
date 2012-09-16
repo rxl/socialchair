@@ -269,7 +269,7 @@ def party():
 
 	playlists = []
 	i = 0
-	names = ["Electronic", "Drum and Bass", "R and B", "Hip-hop", "Techno"]
+	names = ["R and B", "House", "Electronic", "Hip-hop"]
 	for chunk in chunks(songids, 15):
 		song_string = ",".join(chunk)
 		playlists.append({"name": names[i], "songs": song_string })
