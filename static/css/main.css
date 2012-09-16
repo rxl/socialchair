@@ -22,7 +22,9 @@ ul.threecol {
 }
 
 .playlist {
-	margin-bottom: 100px;
+	margin-bottom: 5px;
+	float:left;
+	margin-top:55px;
 }
 
 a.right-nav-item {
@@ -260,6 +262,10 @@ html{
 
 .friend:hover{
 	cursor: pointer;
+}
+
+.party-name{
+	text-align:center;
 }
 
 .friend-name{
