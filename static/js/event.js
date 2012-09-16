@@ -68,6 +68,8 @@ function createEvent() {
 	
 	if (eventData['start_time'] != eventData['end_time']) {
 		postToUrl("/_push_event_to_facebook", "createEvent", eventData);
+	} else {
+		alert("You can't have an event start and end at the same time!");
 	}
 }
 
